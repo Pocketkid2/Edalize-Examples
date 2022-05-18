@@ -1,3 +1,5 @@
 #!/bin/bash
-export BITSTREAM=<NAME>.bit
+echo "Enter bitstream file name: "
+read bitstreamfile
+export BITSTREAM=$bitstreamfile
 openocd -f 7series.txt
