@@ -12,7 +12,7 @@
 
 # # Buttons 
 set_property -dict { PACKAGE_PIN U18   IOSTANDARD LVCMOS33 } [get_ports { btnc }]; 
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets btnc_IBUF];
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets btnc];
 
 # # Switches
 set_property -dict { PACKAGE_PIN V17   IOSTANDARD LVCMOS33 } [get_ports { sw[0] }]; 
