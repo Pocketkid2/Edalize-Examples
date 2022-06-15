@@ -56,8 +56,8 @@ assign vcount_clear = (vcount == (V_TOTAL - 1));
 
 // VGA Colors are taken from bitmap memory when h/v count is within drawable area
 // 0 when outside drawable area
+int index = 0;
 always_comb begin
-    index = 0;
 
     if (hcount < H_PIXELS && vcount < V_PIXELS) begin        
         for (int index = 0; index < 4; index++) begin
