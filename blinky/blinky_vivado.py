@@ -6,18 +6,13 @@ files = [
     {'name' : os.path.relpath('blinky.v', work_root), 'file_type' : 'verilogSource'},
     {'name' : os.path.relpath('blinky.xdc', work_root), 'file_type' : 'xdc'}
 ]
-tool = 'symbiflow'
+tool = 'vivado'
 edam = {
     'files'         : files,
     'name'          : 'blinky_project',
     'parameters'    : {},
     'toplevel'      : 'blinky',
-    'tool_options' : {'symbiflow' : 
-                            {'arch' : 'xilinx',
-                            'package' : 'cpg236-1',
-                            'part' : 'xc7a35t',
-                            'vendor' : 'xilinx',
-                            'pnr' : 'vpr',}}
+    'tool_options' : {'vivado' : {'part' : 'xc7a35tcpg236-1'}}
 }
 
 backend = get_edatool(tool)(edam = edam, work_root = work_root)
