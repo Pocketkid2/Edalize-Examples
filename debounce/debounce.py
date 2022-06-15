@@ -9,18 +9,17 @@ files = [
     {'name' : os.path.relpath('basys3.xdc', work_root), 'file_type' : 'xdc'}
 ]
 
-tool = 'symbiflow'
+tool = 'f4pga'
 edam = {
     'files' : files,
     'name' : 'Debounce',
     'parameters' : {},
     'toplevel' : 'debounce_top',
-    'tool_options' : {'symbiflow' :
-                        {'arch' : 'xilinx',
-                        'package' : 'cpg236-1',
-                        'part' : 'xc7a35t',
-                        'vendor' : 'xilinx',
-                        'pnr' : 'vpr'}}
+    'flow_options' : {
+        'arch': 'xilinx',
+        'device_type': 'artix7',
+        'device_name': 'xc7a50t_test',
+        'part' : 'xc7a35tcpg236-1'}
 }
 
 backend = get_edatool(tool)(edam = edam, work_root = work_root)
