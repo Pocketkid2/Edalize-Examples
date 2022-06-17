@@ -14,11 +14,14 @@ edam = {
     'name' : 'Counter',
     'parameters' : {},
     'toplevel' : 'counter_top',
-    'flow_options' : {
-        'arch': 'xilinx',
-        'device_type': 'artix7',
-        'device_name': 'xc7a50t_test',
-        'part' : 'xc7a35tcpg236-1'}
+    'tool_options' : {
+        'f4pga': {
+            'arch': 'xilinx',
+            'device_type': 'artix7',
+            'device_name': 'xc7a50t_test',
+            'part' : 'xc7a35tcpg236-1'
+        }
+    }
 }
 
 backend = get_edatool(tool)(edam = edam, work_root = work_root)
