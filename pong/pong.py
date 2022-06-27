@@ -18,7 +18,7 @@ edam = {
     'name'          : 'pong',
     'parameters'    : {},
     'toplevel'      : 'top_pong',
-    'tool_options' : {
+    'tool_options'  : {
         'f4pga': {
             'arch': 'xilinx',
             'device_type': 'artix7',
