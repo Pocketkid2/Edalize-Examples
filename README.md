@@ -28,4 +28,4 @@ This table shows the most recent test status for each particular flow variant. I
 | Transmitter (tx)|  
 | Codebreaker     |  
 | Receiver (rx)   |  
-| Pong            |  
+| Pong            | Compiles and works correctly          | Compiles and works correctly  | Does not compile (see [here](https://github.com/gatecat/nextpnr-xilinx/issues/44)) |
