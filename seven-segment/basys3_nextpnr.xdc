@@ -1,24 +1,15 @@
-###################################################################
-# basys3.xdc
-#
-# This file is based on the master constraints file for laboratory assignments used
-# at BYU for ECEN 220. 
-#
-#
-###################################################################
-
 # This file was edited to conform to NextPNR constraint inputs
 
-# # Buttons 
-set_property LOC U18 [get_ports btnc]
+## Clock
+set_property LOC W5 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
+create_clock -period 10.00 [get_ports clk]
 
-set_property IOSTANDARD LVCMOS33 [get_ports btnc]
-
-# # Switches
+## Switches
 set_property LOC V17 [get_ports sw[0]]
 set_property LOC V16 [get_ports sw[1]]
-set_property LOC W16 [get_ports sw[2]]
-set_property LOC W17 [get_ports sw[3]]
+set_property LOC W17 [get_ports sw[2]]
+set_property LOC W16 [get_ports sw[3]]
 set_property LOC W15 [get_ports sw[4]]
 set_property LOC V15 [get_ports sw[5]]
 set_property LOC W14 [get_ports sw[6]]
@@ -49,7 +40,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports sw[13]]
 set_property IOSTANDARD LVCMOS33 [get_ports sw[14]]
 set_property IOSTANDARD LVCMOS33 [get_ports sw[15]]
 
-# # Seven-Segment Display
+## Seven-Segment Display
 set_property LOC W7 [get_ports segment[0]]
 set_property LOC W6 [get_ports segment[1]] 
 set_property LOC U8 [get_ports segment[2]] 
