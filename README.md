@@ -20,7 +20,7 @@ This table shows the most recent test status for each particular flow variant. I
 | Design          | Status (Vivado)                       | Status (VPR)                  | Status (NextPNR)                      |
 | ------          | ---------------                       | ------------                  | ----------------                      | 
 | Blinky          | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
-| Four Functions  |
+| Four Functions  | Compiles and works correctly          | Compiles and works correctly  | Compiles but does not work correctly  |
 | Arithmetic      | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Seven Segment   | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Counter         |
