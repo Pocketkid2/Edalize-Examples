@@ -21,7 +21,7 @@ This table shows the most recent test status for each particular flow variant. I
 | ------          | ---------------                       | ------------                  | ----------------                      | 
 | Blinky          | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Four Functions  |
-| Arithmetic      |
+| Arithmetic      | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Seven Segment   | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Counter         |
 | Stopwatch       | 
