@@ -1,24 +1,31 @@
 # Edalize-Examples
-A set of examles you can use to test a F4PGA/Symbiflow project through Edalize and run on Basys3 board
+A set of examles you can use to test a Verilog/SystemVerilog FPGA project using the F4PGA (previously known as Symbiflow) toolchain through [the latest Edalize development branch from BYU](https://github.com/byuccl/edalize/tree/student_refactor)
+
+The goal is for each design in this repo to have an edalize script for a traditional Vivado flow, as well as two scripts for F4PGA flows (one with VPR and the other with NextPNR).
 
 ## Instructions
-Enter a project directory, make sure you are in a python environment that has F4PGA/Sybmiflow and Edalize installed (conda recommended), and then run `python <project>.py`
+Simply run the python script of your choice, making sure your current environment has all of the tools available (Such as vivado or f4pga)
 
 ### Note
-If the script does not include `backend.build()` at the end of the script, it will not actually run the tools, but rather simply generate the makefile in the build directory. You'll have to either manually enter the build directory and run make or add that line to the end of the python script (usually after `backend.configure()`, which creates the makefile)
+Edalize has three stages: 
+1. Configure, which generates the Makefile and any necessary toolchain files.
+2. Build, which executes the Makefile (usually this means compiling verilog to a bitstream).
+3. Run, which executes a run step configured by the Edalize flow. For F4PGA this means downloading the bitstream to the target board via USB.
+
+Each of these stages corresponds to a method on the backend (Edatool class) provided by Edalize. See the scripts for examples.
 
 ### Current working status
-In some cases Vivado was tested where it was suspected that F4PGA compatibility was lacking
+This table shows the most recent test status for each particular flow variant. I do these tests on my machine, targeting a Basys3.
 
-| Design | Status |
-| ------ | ------ |
-| Four Functions | Compiles and runs in F4PGA |
-| Arithmetic | Compiles and runs in F4PGA |
-| Seven Segment | Compiles and runs in F4PGA |
-| Counter | Compiles and runs in F4PGA and Vivado |
-| Stopwatch | Compiles and runs in Vivado |
-| Debounce | Compiles and runs in F4PGA and Vivado |
-| Transmitter | Compiles and runs in F4PGA |
-| Codebreaker | Compiles and runs in Vivado |
-| Receiver | Compiles and runs in F4PGA |
-| Pong | Compiles and runs in F4PGA |
+| Design          | Status (Vivado)                       | Status (VPR)                  | Status (NextPNR)                      |
+| ------          | ---------------                       | ------------                  | ----------------                      | 
+| Four Functions  |
+| Arithmetic      |
+| Seven Segment   | Compiles but does not work correctly  | Compiles and works correctly  | Compiles but does not work correctly  |
+| Counter         |
+| Stopwatch       | 
+| Debounce        | 
+| Transmitter (tx)|  
+| Codebreaker     |  
+| Receiver (rx)   |  
+| Pong            |  
