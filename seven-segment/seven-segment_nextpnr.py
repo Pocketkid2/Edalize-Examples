@@ -3,7 +3,7 @@ import os
 
 work_root = 'build_nextpnr'
 files = [
-    {'name' : os.path.relpath('seven_segment.sv', work_root), 'file_type' : 'systemVerilogSource'},
+    {'name' : os.path.relpath('SevenSegmentControl.sv', work_root), 'file_type' : 'systemVerilogSource'},
     {'name' : os.path.relpath('seven_segment_top.sv', work_root), 'file_type' : 'systemVerilogSource'},
     {'name' : os.path.relpath('basys3_nextpnr.xdc', work_root), 'file_type' : 'xdc'},
     {'name' : os.path.relpath('xc7a35t.bin', work_root), 'file_type' : 'bin'}
