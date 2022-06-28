@@ -21,7 +21,7 @@ This table shows the most recent test status for each particular flow variant. I
 | ------          | ---------------                       | ------------                  | ----------------                      | 
 | Four Functions  |
 | Arithmetic      |
-| Seven Segment   | Compiles but does not work correctly  | Compiles and works correctly  | Compiles but does not work correctly  |
+| Seven Segment   | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Counter         |
 | Stopwatch       | 
 | Debounce        | 
