@@ -1,27 +1,13 @@
-###################################################################
-# basys3.xdc
-#
-# This is a master constraints file for laboratory assignments used
-# at BYU for ECEN 220.
-#
-# You should uncomment those lines that define ports that you used
-# in your top-level design. You should also change the name of the
-# port in the .xdc file to match your corresponding top-level port.
-#
-###################################################################
-
-## Clock (uncomment both lines)
+## Clock
 set_property -dict { PACKAGE_PIN W5    IOSTANDARD LVCMOS33 } [get_ports { clk }];
 create_clock -period 10.00 [get_ports { clk }];
 
 ## Buttons
+set_property -dict { PACKAGE_PIN U18   IOSTANDARD LVCMOS33 } [get_ports { btnc }];
 set_property -dict { PACKAGE_PIN T18   IOSTANDARD LVCMOS33 } [get_ports { btnu }];
 set_property -dict { PACKAGE_PIN W19   IOSTANDARD LVCMOS33 } [get_ports { btnl }];
 set_property -dict { PACKAGE_PIN T17   IOSTANDARD LVCMOS33 } [get_ports { btnr }];
 set_property -dict { PACKAGE_PIN U17   IOSTANDARD LVCMOS33 } [get_ports { btnd }];
-
-## Switches
-set_property -dict { PACKAGE_PIN V17   IOSTANDARD LVCMOS33 } [get_ports { CPU_RESETN }];
 
 ## Seven-Segment Display
 set_property -dict { PACKAGE_PIN W7    IOSTANDARD LVCMOS33 } [get_ports { segment[0] }];
@@ -56,6 +42,6 @@ set_property -dict { PACKAGE_PIN J18   IOSTANDARD LVCMOS33 } [get_ports { VGA_B[
 set_property -dict { PACKAGE_PIN P19   IOSTANDARD LVCMOS33 } [get_ports { VGA_HS }];
 set_property -dict { PACKAGE_PIN R19   IOSTANDARD LVCMOS33 } [get_ports { VGA_VS }];
 
-## Configuration options, use for all designs
+## Configuration options
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property CFGBVS VCCO [current_design]

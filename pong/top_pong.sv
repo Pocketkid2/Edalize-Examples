@@ -4,26 +4,24 @@
 * Author: Jeff Goeders
 * Date: May 13, 2019
 *
-* Description: Top-level module for Pong on Nexys4DDR board.
+* Description: Top-level module for Pong.
 ****************************************************************************/
-
 `default_nettype none
 
+module top_pong (
+    input wire logic            clk,     // 100 MHz input clock
+    input wire logic            btnc,    // Active-high reset
 
-module top_pong(
-    input wire logic            clk,
-    input wire logic            CPU_RESETN,
+    output logic        [3:0]   VGA_R,   // Red
+    output logic        [3:0]   VGA_G,   // Green
+    output logic        [3:0]   VGA_B,   // Blue
+    output logic                VGA_HS,  // Horizontal Sync
+    output logic                VGA_VS,  // Vertical Sync
 
-    output logic        [3:0]   VGA_R,
-    output logic        [3:0]   VGA_G,
-    output logic        [3:0]   VGA_B,
-    output logic                VGA_HS,
-    output logic                VGA_VS,
+    output logic        [3:0]   anode,   // Anode signals for display
+    output logic        [7:0]   segment, // Cathode signals for display
 
-    output logic        [3:0]   anode,
-    output logic        [7:0]   segment,
-    
-    input wire logic            btnu,
+    input wire logic            btnu,    // Buttons for game control
     input wire logic            btnd,
     input wire logic            btnl,
     input wire logic            btnr
@@ -41,9 +39,9 @@ logic           vga_wr_en;
 logic   [7:0]   P1score;
 logic   [7:0]   P2score;
 
-assign reset = /*~*/CPU_RESETN;
+assign reset = btnc;
 
-Pong Pong_inst(
+Pong Pong_inst (
     .clk(clk_100),
     .reset(reset),
     .LPaddleUp(btnu),
@@ -58,14 +56,13 @@ Pong Pong_inst(
     .P2score(P2score)
 );
 
-clk_generator clk_generator_inst
- (
+clk_generator clk_generator_inst (
     .clk_100(clk_100),
     .clk_25(clk_25),
     .clk_in_100(clk)
- );
+);
 
-BitmapToVga BitmapToVga_inst(
+BitmapToVga BitmapToVga_inst (
     .VGA_R(VGA_R),
     .VGA_G(VGA_G),
     .VGA_B(VGA_B),
@@ -82,13 +79,12 @@ BitmapToVga BitmapToVga_inst(
 
 SevenSegmentControl SSC (
     .clk(clk_100),
-    .reset(reset),		
-    .dataIn({P1score, P2score}), 
-    .digitDisplay(8'b1111),
-    .digitPoint(8'b0100),
+    .reset(reset),
+    .dataIn({P1score, P2score}),
+    .digitDisplay(4'b1111),
+    .digitPoint(4'b0100),
     .anode(anode),
     .segment(segment)
 );
-
 
 endmodule

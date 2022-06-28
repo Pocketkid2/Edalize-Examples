@@ -5,13 +5,13 @@
 * Module: Pong
 *
 * Author: Adam Taylor
-* Class: ECEn220 (Created as a Symbiflow TA, Winter 2022)
-* Date: January 31st, 2022
+* Date: June 28th, 2022
 *
-* Description: Contains a state machine used to run the Pong game
+* Contains a state machine used to run the Pong game
 *
 *
 ****************************************************************************/
+
 
 module Pong (
     input wire logic        clk,

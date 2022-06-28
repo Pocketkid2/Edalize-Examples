@@ -5,10 +5,9 @@
 * Module: BallDrawer
 *
 * Author: Adam Taylor
-* Class: ECEn220 (Created as a Symbiflow TA, Winter 2022)
-* Date: January 31st, 2022
+* Date: June 28th, 2022
 *
-* Description: Contains a state machine used to draw a ball
+* Contains a state machine used to draw a ball
 *
 *
 ****************************************************************************/
