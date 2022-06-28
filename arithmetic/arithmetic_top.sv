@@ -5,10 +5,9 @@
 * Module: arithmetic_top.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, Sep 28, 2021
+* Date: June 28th, 2022
 *
-* Description: This file implements a single-bit full adder
+* The top module for adding the switch data and displaying it over LED
 *
 *
 ****************************************************************************/
