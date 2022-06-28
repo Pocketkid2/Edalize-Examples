@@ -5,10 +5,9 @@
 * Module: FourFunctions.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, September 21st, 2021
+* Date: June 28th, 2022
 *
-* Description: This was my original submission for ECEn220 Lab 3 during Fall 2021
+* Implements four logic functions (switch inputs -> LED outputs)
 *
 *
 ****************************************************************************/
