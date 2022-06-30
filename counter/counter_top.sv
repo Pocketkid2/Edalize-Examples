@@ -5,33 +5,57 @@
 * Module: counter_top.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, October 19th, 2021
+* Date: June 28th, 2022
 *
-* Description: Top level module for the 4 bit counter
+* Top level module for the 4 bit counter
 *
 *
 ****************************************************************************/
 
 
 module counter_top(
+        input wire logic clk,
         input wire logic btnc, 
-	input wire logic [1:0] sw,
-        output wire [6:0] segment, 
-	output wire [3:0] anode, 
-	output wire [3:0] led
+		input wire logic [1:0] sw,
+        output wire [7:0] segment, 
+		output wire [3:0] anode, 
+		output wire [15:0] led
     );
     
-    // Create a 4 bit wire for intermediating between the counter and the seven segment display
-    logic [3:0] current_data;
+    // Create a 16 bit wire for intermediating between the counter and the seven segment display
+    logic [15:0] current_data;
+    logic inc_tens, inc_hundreds, inc_thousands;
+    logic [3:0] bcd0, bcd1, bcd2, bcd3;
     
-    // Assign the first or left most seven segment to be on
-    assign anode = 4'b1110;
-    
-    // Run the counter with the given inputs and output the data to the intermediate wire
-    FunCounter4 COUNTER(.CLK(btnc), .CLR(sw[0]), .INC(sw[1]), .Q(current_data), .NXT(led));
+    // Each counter handles a single digit on the display, last rollover triggers far left LED
+    counter4 COUNTER0(
+        .CLK(btnc), .CLR(sw[0]), 
+        .INC(sw[1]),            .Q(current_data[3:0]),          
+        .NXT(bcd0), .ROLL(inc_tens));
+    counter4 COUNTER1(
+        .CLK(btnc), .CLR(sw[0]), 
+        .INC(inc_tens),         .Q(current_data[7:4]),          
+        .NXT(bcd1), .ROLL(inc_hundreds));
+    counter4 COUNTER2(
+        .CLK(btnc), .CLR(sw[0]), 
+        .INC(inc_hundreds),     .Q(current_data[11:8]),         
+        .NXT(bcd2), .ROLL(inc_thousands));
+    counter4 COUNTER3(
+        .CLK(btnc), .CLR(sw[0]), 
+        .INC(inc_thousands),    .Q(current_data[15:12]),        
+        .NXT(bcd3), .ROLL(led[15]));
+
+	// Convert the four register BCD values to regular binary to display on the LEDs
+	bcd2bin CONVERTER(.bcd0(bcd0), .bcd1(bcd1), .bcd2(bcd2), .bcd3(bcd3), .bin(led[13:0]));
     
     // Run the seven segment module with the current data from the intermediate wire
-    seven_segment COMPUTE_DISPLAY(.data(current_data), .segment(segment));
+    SevenSegmentControl COMPUTE_DISPLAY(
+        .clk(clk), 
+        .reset(sw[0]), 
+        .dataIn(current_data),
+        .digitDisplay(4'b1111),
+        .digitPoint(4'b0000),
+        .anode(anode),
+        .segment(segment));
     
 endmodule

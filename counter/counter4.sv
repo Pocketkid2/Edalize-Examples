@@ -2,28 +2,33 @@
 `default_nettype none
 /***************************************************************************
 *
-* Module: FunCounter4.sv
+* Module: counter4.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, October 19th, 2021
+* Date: June 28th, 2022
 *
-* Description: Four bit register-counter as seen in the textbook Figure 16.7
+* Four bit register-counter that rolls over at 10 to 0 (decimal instead of hex)
 *
 *
 ****************************************************************************/
 
 
-module FunCounter4(
+module counter4(
         input wire logic CLK, CLR, INC,
         output wire [3:0] Q, 
-	output wire [3:0] NXT
+	    output wire [3:0] NXT,
+        output wire ROLL
     );
     
-    // Operate like a 4:1, top line is the 10 value, next line is 01, and the other two cases are handled by the last line.
+    // If CLR high, reset to zero
+    // If INC high, add one (mod ten)
+    // Else maintain
     assign NXT = (CLR & ~INC) ? 0000 : 
-                 (~CLR & INC) ? (Q + 1) :
+                 (~CLR & INC) ? ((Q + 1) % 10) :
                  Q;
+
+    // If Q is 9 (about to rollover) set ROLL high
+    assign ROLL = (Q == 4'd9) ? 1'b1 : 1'b0;
                  
     // Instance flip flops with inputs CLK and NXT, and output Q
     FDCE my_ff1 (.Q(Q[0]), .C(CLK), .CE(1'b1), .CLR(1'b0), .D(NXT[0]));
