@@ -5,10 +5,9 @@
 * Module: stopwatch_top.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, October 26th, 2021
+* Date: June 30th, 2022
 *
-* Description: This is the top level module that matches the stopwatch to the display and buttons and switches, etc
+* This is the top level module that matches the stopwatch to the display and buttons and switches, etc
 *
 *
 ****************************************************************************/
@@ -17,7 +16,7 @@
 module stopwatch_top(
         input wire logic clk, btnc, sw,
         output logic [3:0] anode, 
-	output logic [7:0] segment
+	    output logic [7:0] segment
     );
     
     // Create an intermediate data wire to transfer the four digit data from the stopwatch module to the display module

@@ -5,10 +5,10 @@
 * Module: mod_counter.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, October 26th, 2021
+* Date: June 30th, 2022
 *
-* Description: This module is a modulo counter, with parameters for how many bits to count with, and which value to use as the modulo
+* MOD_VALUE determines when rollover happens
+* BITS determines how large the counter is (0...2^n-1)
 *
 *
 ****************************************************************************/
@@ -17,7 +17,7 @@
 module mod_counter #(parameter MOD_VALUE=10, BITS=4) (
         input wire logic clk, reset, increment,
         output logic rolling_over, 
-	output logic [BITS-1:0] count
+		output logic [BITS-1:0] count
     );
     
     always_ff @(posedge clk)

@@ -5,10 +5,9 @@
 * Module: stopwatch.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, October 26th, 2021
+* Date: June 30th, 2022
 *
-* Description: This module combines 5 modulo counters to allow for 0.01s count, 0.1s count, 1.0s count, and 10s count
+* Increments digit counters every 10ms
 *
 *
 ****************************************************************************/
