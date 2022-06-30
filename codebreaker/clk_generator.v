@@ -1,3 +1,4 @@
+
 // file: clk_generator.v
 // 
 // (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
@@ -66,21 +67,19 @@
 `timescale 1ps/1ps
 
 module clk_generator
-
- (// Clock in ports
-  // Clock out ports
-  output        clk_100,
-  output        clk_25,
-  input         clk_in_100
- );
+  (// Clock in ports
+   // Clock out ports
+   output        clk_100,
+   output        clk_25,
+   input         clk_in_100
+  );
   // Input buffering
   //------------------------------------
-wire clk_in1_clk_generator;
-wire clk_in2_clk_generator;
+  wire clk_in1_clk_generator;
+  wire clk_in2_clk_generator;
   IBUF clkin1_ibufg
    (.O (clk_in1_clk_generator),
     .I (clk_in_100));
-
 
   // Clocking PRIMITIVE
   //------------------------------------
@@ -104,9 +103,9 @@ wire clk_in2_clk_generator;
   wire        clkfbout_clk_generator;
   wire        clkfbout_buf_clk_generator;
   wire        clkfboutb_unused;
-   wire clkout2_unused;
-   wire clkout3_unused;
-   wire clkout4_unused;
+  wire        clkout2_unused;
+  wire        clkout3_unused;
+  wire        clkout4_unused;
   wire        clkout5_unused;
   wire        clkout6_unused;
   wire        clkfbstopped_unused;
@@ -155,25 +154,20 @@ wire clk_in2_clk_generator;
     .RST                 (1'b0));
 
 // Clock Monitor clock assigning
-//--------------------------------------
- // Output buffering
-  //-----------------------------------
+//-----------------------------------
+// Output buffering
+//-----------------------------------
 
   BUFG clkf_buf
    (.O (clkfbout_buf_clk_generator),
     .I (clkfbout_clk_generator));
 
-
-
   BUFG clkout1_buf
    (.O   (clk_100),
     .I   (clk_100_clk_generator));
 
-
   BUFG clkout2_buf
    (.O   (clk_25),
     .I   (clk_25_clk_generator));
-
-
 
 endmodule

@@ -1,17 +1,19 @@
+`default_nettype none
+
 module decrypt_rc4 #(
-    parameter BYTES_LEN = 16
+    parameter K_BYTES_LEN =  3,
+    parameter M_BYTES_LEN = 16
 ) (
     input wire logic                                        clk,        // Clock
     input wire logic                                        reset,      // Active-high reset
     input wire logic                                        enable,     // Start encryption/decryption
-    input wire logic    [23:0]                              key,        // 3 byte key
-    input wire logic    [(BYTES_LEN * 8) - 1:0]             bytes_in,   // byte stream in
-    output logic        [(BYTES_LEN * 8) - 1:0]             bytes_out,  // byte stream out
+    input wire logic    [(K_BYTES_LEN * 8) - 1:0]           key,        // key
+    input wire logic    [(M_BYTES_LEN * 8) - 1:0]           bytes_in,   // byte stream in
+    output logic        [(M_BYTES_LEN * 8) - 1:0]           bytes_out,  // byte stream out
     output logic                                            done        // Active-high done
 );
 
     // This module implements the following RC4 encryption/decryption algorithm:
-
     // for i from 0 to 255                                  (LOOP1)
     //     S[i] := i
     // endfor
@@ -29,21 +31,13 @@ module decrypt_rc4 #(
     //     K := S[(S[i] + S[j]) mod 256]
     //     output K
     // endwhile
+
     typedef enum {S_INIT, S_LOOP1,
                     S_LOOP2_readSi, S_LOOP2_readSj, S_LOOP2_write,
                     S_LOOP3_init, S_LOOP3_readSi, S_LOOP3_readSj, S_LOOP3_writeSi, S_LOOP3_writeSj, S_LOOP3_readK,
                     S_update_text_out,
                     S_DONE} StateType;
     StateType cs;
-
-    // Lookup table for % 3 calculation.
-    logic[1:0] modmem[256] = '{0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2,
-                               0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2,
-                               0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2,
-                               0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2,
-                               0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2,
-                               0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0};
-
 
     logic   [7:0]   i;                          // i Variable register
     logic   [7:0]   j;                          // j Variable registers
@@ -65,16 +59,17 @@ module decrypt_rc4 #(
     logic   [7:0]   j_calc_loop3;               // Combinational logic to calculate j variable (LOOP3)
     logic   [7:0]   K_lookup;                   // Address to lookup K-value: (S[i] + S[j])
 
-    logic   [31:0]  msg_byte_idx;               // Index to count which byte of input stream is being processed.
-                                                // The most significant byte is processed first.
+    logic   [$clog2(K_BYTES_LEN)-1:0]  key_byte_idx; // Index to count which byte of key is being processed.
+    logic   [$clog2(M_BYTES_LEN)-1:0]  msg_byte_idx; // Index to count which byte of input stream is being processed.
+                                                     // The most significant byte is processed first.
 
     ////////////////////////////// Outputs //////////////////////////////////////
+
     always_ff @(posedge clk) begin
         if (cs == S_update_text_out) begin
             bytes_out[msg_byte_idx * 8 +: 8] <= bytes_in[msg_byte_idx * 8 +: 8] ^ ram_data_out_a;
         end
     end
-
 
     ////////////////////////////// STATE MACHINE ////////////////////////////////
 
@@ -128,12 +123,13 @@ module decrypt_rc4 #(
 
     ////////////////////////////// Datapath variables ////////////////////////////////
 
-    // Update i, j and curent byte index (msg_byte_idx)
+    // Update i, j and current byte index (msg_byte_idx)
     always_ff @(posedge clk) begin
         case(cs)
         S_INIT: begin
             i <= 8'b0;
             j <= 8'b0;
+            key_byte_idx <= 0;
         end
         S_LOOP1: begin
             i <= i + 2;
@@ -143,11 +139,15 @@ module decrypt_rc4 #(
         end
         S_LOOP2_write: begin
             i <= i + 1;
+            if (key_byte_idx == K_BYTES_LEN - 1)
+                key_byte_idx <= 0;
+            else
+                key_byte_idx <= key_byte_idx + 1;
         end
         S_LOOP3_init: begin
             i <= 0;
             j <= 0;
-            msg_byte_idx <= (BYTES_LEN - 1);
+            msg_byte_idx <= (M_BYTES_LEN - 1);
         end
         S_LOOP3_readSi: begin
             i <= i_calc_loop3;
@@ -172,10 +172,7 @@ module decrypt_rc4 #(
     end
 
     assign i_calc_loop3 = i + 1;
-    // The original % 3 calculation worked in 2019.1 but not in 2020.1
-    // Replace with a lookup table
-    //assign j_calc = j + ram_data_out_a + key[(i % 3) * 8 +: 8];
-    assign j_calc = j + ram_data_out_a + key[modmem[i] * 8 +: 8];
+    assign j_calc = j + ram_data_out_a + key[key_byte_idx * 8 +: 8];
     assign j_calc_loop3 = (j + ram_data_out_a);
     assign K_lookup = Si_saved + Sj_saved;
 
@@ -286,4 +283,5 @@ always @(posedge clk_b) begin
         data_out_b <= ram[addr_b];
     end
 end
+
 endmodule
