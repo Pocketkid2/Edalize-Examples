@@ -23,7 +23,7 @@ This table shows the most recent test status for each particular flow variant. I
 | Four Functions  | Compiles and works correctly          | Compiles and works correctly  | Compiles but does not work correctly  |
 | Arithmetic      | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Seven Segment   | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
-| Counter         |
+| Counter         | Compiles and works correctly          | Compiles and works correctly  | Does not compile (btnc clock issue)   |
 | Stopwatch       | 
 | Debounce        | 
 | Transmitter (tx)|  
