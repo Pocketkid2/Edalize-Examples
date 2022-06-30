@@ -58,7 +58,5 @@ set_property IOSTANDARD LVCMOS33 [get_ports anode[3]]
 
 ## UART
 set_property LOC A18 [get_ports tx_out] 
-set_property LOC J1  [get_ports tx_debug]
 
 set_property IOSTANDARD LVCMOS33 [get_ports tx_out] 
-set_property IOSTANDARD LVCMOS33 [get_ports tx_debug]
