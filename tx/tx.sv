@@ -5,10 +5,9 @@
 * Module: tx.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, November 9th. 2021
+* Date: June 30th, 2022
 *
-* Description: The UART Transmitter
+* A UART Transmitter
 *
 *
 ****************************************************************************/
@@ -16,7 +15,7 @@
 
 module tx(
         input wire logic clk, Reset, Send, i,
-	input wire logic [7:0] Din,
+		input wire logic [7:0] Din,
         output logic Sent, Sout
     );
     
@@ -153,7 +152,5 @@ module tx(
             Sout <= ~^Din;
         else
             Sout <= 1;
-    
-    
     
 endmodule

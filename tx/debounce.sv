@@ -5,10 +5,9 @@
 * Module: debounce.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, November 2nd, 2021
+* Date: June 30th, 2022
 *
-* Description: Finite State Machine for debounce logic
+* Finite State Machine for debounce logic
 *
 *
 ****************************************************************************/
@@ -103,6 +102,5 @@ module debounce(
     // Combinational logic for knowing when the timer is done
     always_comb
         timerDone = (q >= 500000);
-    
-    
+        
 endmodule

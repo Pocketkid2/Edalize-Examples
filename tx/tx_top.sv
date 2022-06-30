@@ -8,16 +8,18 @@
 //
 //
 //////////////////////////////////////////////////////////////////////////////////
+`default_nettype none
 
-module tx_top(
+module tx_top (
     input wire logic            clk,
     input wire logic            btnu, //reset
     input wire logic    [7:0]   sw,
-    input wire logic            btnc,
+    input wire logic            btnc, // send character
     output logic        [3:0]   anode,
     output logic        [7:0]   segment,
     output logic                tx_out,
-    output logic                tx_debug);
+    output logic                tx_debug
+    );
 
     logic reset;
     assign reset = btnu;
@@ -28,14 +30,14 @@ module tx_top(
     logic   send_character;
 
     // Button synchronizer
-    always_ff@(posedge clk)
+    always_ff @(posedge clk)
     begin
-       btnc_r <= btnc;
-       btnc_r2 <= btnc_r;
+        btnc_r <= btnc;
+        btnc_r2 <= btnc_r;
     end
 
     // Debounce the start button
-    debounce debounce_inst(
+    debounce debounce_inst (
         .clk(clk),
         .reset(reset),
         .noisy(btnc_r2),
@@ -43,7 +45,7 @@ module tx_top(
     );
 
     // Transmitter
-    tx tx_inst(
+    tx tx_inst (
         .clk    (clk),
         .Reset  (reset),
         .Send   (send_character),
