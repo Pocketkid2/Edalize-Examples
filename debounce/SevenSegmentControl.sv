@@ -8,8 +8,9 @@
 //
 //
 //////////////////////////////////////////////////////////////////////////////////
+`default_nettype none
 
-module SevenSegmentControl(
+module SevenSegmentControl (
     input wire logic            clk,
     input wire logic            reset,
     input wire logic    [15:0]  dataIn,
@@ -19,7 +20,7 @@ module SevenSegmentControl(
     output logic        [7:0]   segment
     );
 
-    parameter /*integer*/ COUNT_BITS = 17;
+    parameter integer COUNT_BITS = 17;
 
     logic   [COUNT_BITS-1:0]    count_val;
     logic   [1:0]               anode_select;
@@ -28,16 +29,16 @@ module SevenSegmentControl(
 
     // Create counter
     always_ff @(posedge clk) begin
-       if (reset)
-           count_val <= 0;
-       else
-           count_val <= count_val + 1;
+        if (reset)
+            count_val <= 0;
+        else
+            count_val <= count_val + 1;
     end
 
     // Signal to indicate which anode we are driving
     assign anode_select = count_val[COUNT_BITS-1:COUNT_BITS-2];
 
-    // current andoe
+    // current anode
     assign cur_anode =
         (anode_select == 2'b00) ? 4'b1110 :
         (anode_select == 2'b01) ? 4'b1101 :

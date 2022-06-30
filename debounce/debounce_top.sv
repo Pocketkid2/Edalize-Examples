@@ -5,10 +5,9 @@
 * Module: debounce_top.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, November 2nd, 2021
+* Date: June 30th, 2022
 *
-* Description: Top module for debounce circuit
+* Top module for debounce circuit
 *
 *
 ****************************************************************************/
@@ -17,7 +16,7 @@
 module debounce_top(
         input wire logic clk, btnu, btnc,
         output logic [3:0] anode, 
-	output logic [7:0] segment
+		output logic [7:0] segment
     );
     
     // SYNCHRONIZER ----------------------
