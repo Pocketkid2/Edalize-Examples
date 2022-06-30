@@ -8,6 +8,7 @@
 //
 //
 //////////////////////////////////////////////////////////////////////////////////
+`default_nettype none
 
 module rx_top (
     input wire logic  clk,   // system clock
@@ -15,7 +16,8 @@ module rx_top (
     input wire logic  rx_in, // serial input
     output logic[15:0] led,
     output logic[3:0] anode,
-    output logic[7:0] segment);
+    output logic[7:0] segment
+    );
 
     logic reset, req, ack, perr;
     logic[7:0] data0, data1, data2;

@@ -5,10 +5,9 @@
 * Module: rx.sv
 *
 * Author: Adam Taylor
-* Class: ECEN 220 - Fall 2021
-* Date: Tuesday, November 9th, 2021
+* Date: June 30th, 2022
 *
-* Description: UART Receiver module
+* A UART Receiver state machine
 *
 *
 ****************************************************************************/
@@ -137,6 +136,5 @@ module rx(
     
     always_ff @(posedge clk)
         cs <= ns;
-    
     
 endmodule
