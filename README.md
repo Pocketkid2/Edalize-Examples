@@ -25,7 +25,7 @@ This table shows the most recent test status for each particular flow variant. I
 | Seven Segment   | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Counter         | Compiles and works correctly          | Compiles and works correctly  | Does not compile (btnc clock issue)   |
 | Stopwatch       | 
-| Debounce        | 
+| Debounce        | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Transmitter (tx)|  
 | Codebreaker     |  
 | Receiver (rx)   |  
