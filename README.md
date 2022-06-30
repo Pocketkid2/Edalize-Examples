@@ -17,16 +17,16 @@ Each of these stages corresponds to a method on the backend (Edatool class) prov
 ### Current working status
 This table shows the most recent test status for each particular flow variant. I do these tests on my machine, targeting a Basys3.
 
-| Design          | Status (Vivado)                       | Status (VPR)                  | Status (NextPNR)                      |
-| ------          | ---------------                       | ------------                  | ----------------                      | 
-| Blinky          | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
-| Four Functions  | Compiles and works correctly          | Compiles and works correctly  | Compiles but does not work correctly  |
-| Arithmetic      | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
-| Seven Segment   | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
-| Counter         | Compiles and works correctly          | Compiles and works correctly  | Does not compile (btnc clock issue)   |
+| Design          | Status (Vivado)                       | Status (VPR)                          | Status (NextPNR)                      |
+| ------          | ---------------                       | ------------                          | ----------------                      | 
+| Blinky          | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
+| Four Functions  | Compiles and works correctly  | Compiles and works correctly          | Compiles but does not work correctly  |
+| Arithmetic      | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
+| Seven Segment   | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
+| Counter         | Compiles and works correctly  | Compiles and works correctly          | Does not compile (btnc clock issue)   |
 | Stopwatch       | 
-| Debounce        | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
-| Transmitter (tx)| Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          | 
-| Codebreaker     |  
-| Receiver (rx)   | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
-| Pong            | Compiles and works correctly          | Compiles and works correctly  | Does not compile (see [here](https://github.com/gatecat/nextpnr-xilinx/issues/44)) |
+| Debounce        | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
+| Transmitter (tx)| Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          | 
+| Codebreaker     | Compiles and works correctly  | Compiles but does not work correctly  | Does not compile (no Bels remaining)  |
+| Receiver (rx)   | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
+| Pong            | Compiles and works correctly  | Compiles and works correctly          | Does not compile (see [here](https://github.com/gatecat/nextpnr-xilinx/issues/44)) |
