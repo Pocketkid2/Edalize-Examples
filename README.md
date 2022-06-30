@@ -28,5 +28,5 @@ This table shows the most recent test status for each particular flow variant. I
 | Debounce        | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Transmitter (tx)| Compiles and works correctly          | Compiles and works correctly  | Compiles but does not work correctly  | 
 | Codebreaker     |  
-| Receiver (rx)   |  
+| Receiver (rx)   | Compiles and works correctly          | Compiles and works correctly  | Compiles and works correctly          |
 | Pong            | Compiles and works correctly          | Compiles and works correctly  | Does not compile (see [here](https://github.com/gatecat/nextpnr-xilinx/issues/44)) |
