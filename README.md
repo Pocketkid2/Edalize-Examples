@@ -23,7 +23,7 @@ This table shows the most recent test status for each particular flow variant. I
 | Four Functions  | Compiles and works correctly  | Compiles and works correctly          | Compiles but does not work correctly  |
 | Arithmetic      | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
 | Seven Segment   | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
-| Counter         | Compiles and works correctly  | Compiles and works correctly          | Does not compile (btnc clock issue)   |
+| Counter         | Compiles and works correctly  | Compiles and works correctly          | Does not compile (NextPNR get_nets)   |
 | Stopwatch       | Compiles and works correctly  | Compiles but does not work correctly  | Does not compile (NxetPNR hangs?)     |
 | Debounce        | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
 | Transmitter (tx)| Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          | 
