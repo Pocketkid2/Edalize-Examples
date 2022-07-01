@@ -6,7 +6,7 @@ files = [
     {'name' : os.path.relpath('Add8.sv', work_root), 'file_type' : 'systemVerilogSource'},
     {'name' : os.path.relpath('FullAdd.sv', work_root), 'file_type' : 'systemVerilogSource'},
     {'name' : os.path.relpath('arithmetic_top.sv', work_root), 'file_type' : 'systemVerilogSource'},
-    {'name' : os.path.relpath('basys3_nextpnr.xdc', work_root), 'file_type' : 'xdc'},
+    {'name' : os.path.relpath('basys3.xdc', work_root), 'file_type' : 'xdc'},
     {'name' : os.path.relpath('xc7a35t.bin', work_root), 'file_type' : 'bin'}
 ]
 tool = 'f4pga'
