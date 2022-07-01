@@ -10,7 +10,7 @@ files = [
     {'name' : os.path.relpath('Pong.sv', work_root), 'file_type' : 'systemVerilogSource'},
     {'name' : os.path.relpath('top_pong.sv', work_root), 'file_type' : 'systemVerilogSource'},
     {'name' : os.path.relpath('clk_generator.v', work_root), 'file_type' : 'verilogSource'},
-    {'name' : os.path.relpath('basys3_nextpnr.xdc', work_root), 'file_type' : 'xdc'},
+    {'name' : os.path.relpath('basys3.xdc', work_root), 'file_type' : 'xdc'},
     {'name' : os.path.relpath('xc7a35t.bin', work_root), 'file_type' : 'bin'}
 ]
 tool = 'f4pga'
