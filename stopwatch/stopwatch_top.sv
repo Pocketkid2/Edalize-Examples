@@ -14,7 +14,8 @@
 
 
 module stopwatch_top(
-        input wire logic clk, btnc, sw,
+        input wire logic clk, btnc,
+        input wire logic [1:0] sw,
         output logic [3:0] anode, 
 	    output logic [7:0] segment
     );
@@ -23,9 +24,9 @@ module stopwatch_top(
     logic [15:0] data_wire;
     
     // Instantiate the seven segment display controller, pass in fixed values to turn on all displays and only second decimal point
-    SevenSegmentControl SEVEN_SEGMENT_DISPLAY_CONTROLLER (.clk(clk), .dataIn(data_wire), .digitDisplay(4'b1111), .digitPoint(4'b0100), .anode(anode), .segment(segment));
+    SevenSegmentControl SEVEN_SEGMENT_DISPLAY_CONTROLLER (.clk(clk), .reset(sw[1]), .dataIn(data_wire), .digitDisplay(4'b1111), .digitPoint(4'b0100), .anode(anode), .segment(segment));
     
     // Instantiate the stopwatch controller, pass out the data
-    stopwatch STOPWATCH_CONTROLLER (.clk(clk), .reset(btnc), .run(sw), .digit0(data_wire[3:0]), .digit1(data_wire[7:4]), .digit2(data_wire[11:8]), .digit3(data_wire[15:12]));
+    stopwatch STOPWATCH_CONTROLLER (.clk(clk), .reset(btnc), .run(sw[0]), .digit0(data_wire[3:0]), .digit1(data_wire[7:4]), .digit2(data_wire[11:8]), .digit3(data_wire[15:12]));
     
 endmodule

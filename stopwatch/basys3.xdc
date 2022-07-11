@@ -6,7 +6,8 @@ create_clock -period 10.0 [get_ports clk]
 set_property -dict { PACKAGE_PIN U18   IOSTANDARD LVCMOS33 } [get_ports btnc]
 
 ## Switches
-set_property -dict { PACKAGE_PIN V17   IOSTANDARD LVCMOS33 } [get_ports sw]
+set_property -dict { PACKAGE_PIN V17   IOSTANDARD LVCMOS33 } [get_ports sw[0]]
+set_property -dict { PACKAGE_PIN V16   IOSTANDARD LVCMOS33 } [get_ports sw[1]]
 
 ## Seven-Segment Display
 set_property -dict { PACKAGE_PIN W7    IOSTANDARD LVCMOS33 } [get_ports segment[0]]
