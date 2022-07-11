@@ -24,7 +24,7 @@ This table shows the most recent test status for each particular flow variant. I
 | Arithmetic      | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
 | Seven Segment   | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
 | Counter         | Compiles and works correctly  | Compiles and works correctly          | Does not compile (NextPNR get_nets)   |
-| Stopwatch       | Compiles and works correctly  | Compiles but only works partially     | Does not compile (NxetPNR hangs?)     |
+| Stopwatch       | Compiles and works correctly  | Compiles but only works partially     | Does not compile (NextPNR hangs?)     |
 | Debounce        | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
 | Transmitter (tx)| Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          | 
 | Codebreaker     | Compiles and works correctly  | Compiles but does not work correctly  | Does not compile (no Bels remaining)  |
