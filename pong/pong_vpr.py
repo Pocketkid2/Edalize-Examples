@@ -21,10 +21,7 @@ edam = {
     'toplevel'      : 'top_pong',
     'tool_options'  : {
         'f4pga': {
-            'arch': 'xilinx',
-            'device_type': 'artix7',
-            'device_name': 'xc7a50t_test',
-            'part' : 'xc7a35tcpg236-1',
+            'board' : 'basys3',
             'pnr' : 'vpr'
         }
     }
