@@ -6,7 +6,7 @@ files = [
     {'name' : os.path.relpath('SevenSegmentControl.sv', work_root), 'file_type' : 'systemVerilogSource'},
     {'name' : os.path.relpath('seven_segment_top.sv', work_root), 'file_type' : 'systemVerilogSource'},
     {'name' : os.path.relpath('basys3.xdc', work_root), 'file_type' : 'xdc'},
-    {'name' : os.path.relpath('xc7a35t.bin', work_root), 'file_type' : 'bin'}
+    {'name' : os.path.relpath('xc7a35tcpg236-1.bin', work_root), 'file_type' : 'bin'}
 ]
 tool = 'f4pga'
 edam = {
@@ -16,10 +16,7 @@ edam = {
     'toplevel' : 'seven_segment_top',
     'tool_options' : {
         'f4pga': {
-            'arch': 'xilinx',
-            'device_type': 'artix7',
-            'device_name': 'xc7a50t_test',
-            'part' : 'xc7a35tcpg236-1',
+            'board' : 'basys3',
             'pnr' : 'nextpnr'
         }
     }
