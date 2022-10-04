@@ -1,4 +1,5 @@
 from edalize import *
+from edalize.flows.f4pga import F4pga as F4pga_flow
 import os
 
 work_root = 'build_vpr'
@@ -12,16 +13,14 @@ edam = {
     'name'          : 'blinky',
     'parameters'    : {},
     'toplevel'      : 'blinky',
-    'tool_options'  : {
-        'f4pga': {
-            'board' : 'basys3',
-            'pnr' : 'vpr'
-        }
+    'flow_options'  : {
+        "device": "artix7",
+        "part": "xc7a35tcpg236-1"
     }
 }
 
-backend = get_edatool(tool)(edam = edam, work_root = work_root)
+backend = F4pga_flow(edam = edam, work_root = work_root)
 os.makedirs(work_root)
 backend.configure()
-backend.build()
-backend.run()
+#backend.build()
+#backend.run()

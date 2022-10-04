@@ -12,11 +12,12 @@ edam = {
     'name'          : 'blinky_project',
     'parameters'    : {},
     'toplevel'      : 'blinky',
-    'tool_options' : {'vivado' : {'part' : 'xc7a35tcpg236-1'}}
+    'flow_options' : {'synth' : 'yosys'},
+    'tool_options' : {'vivado' : {'part' : 'xc7a35tcpg236-1', 'synth' : 'yosys'}}
 }
 
 backend = get_edatool(tool)(edam = edam, work_root = work_root)
 os.makedirs(work_root)
 backend.configure()
-backend.build()
-backend.run()
+#backend.build()
+#backend.run()
