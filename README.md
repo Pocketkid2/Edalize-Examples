@@ -1,7 +1,7 @@
 # Edalize Examples
-A set of examles you can use to test a Verilog/SystemVerilog FPGA project using the F4PGA (previously known as Symbiflow) toolchain through [the latest Edalize development branch from BYU](https://github.com/byuccl/edalize/tree/f4pga_flow)
+A set of examples used for testing the F4PGA backend inside the Edalize python module. F4PGA is an open source toolchain flow for compiling Verilog/SystemVerilog to an FPGA bitstream. Edalize is a python module that abstracts away logic design tools from the projects themselves, and provides backends for many existing tools and flows. This repository was created to aid in the development of the F4PGA flow inside edalize, and targets [the latest Edalize development branch from BYU](https://github.com/byuccl/edalize/tree/f4pga_flow).
 
-The goal is for each design in this repo to have an edalize script for a traditional Vivado flow, as well as two scripts for F4PGA flows (one with VPR and the other with NextPNR).
+The goal is for each design in this repo to have an edalize script for a traditional Vivado flow, as well as two scripts for F4PGA flows (one with VPR as the place and route tool and the other with NextPNR instead).
 
 ## Instructions
 Simply run the python script of your choice, making sure your current environment has all of the tools available (Such as vivado or f4pga)
