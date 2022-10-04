@@ -1,5 +1,5 @@
-# Edalize-Examples
-A set of examles you can use to test a Verilog/SystemVerilog FPGA project using the F4PGA (previously known as Symbiflow) toolchain through [the latest Edalize development branch from BYU](https://github.com/byuccl/edalize/tree/student_refactor)
+# Edalize Examples
+A set of examles you can use to test a Verilog/SystemVerilog FPGA project using the F4PGA (previously known as Symbiflow) toolchain through [the latest Edalize development branch from BYU](https://github.com/byuccl/edalize/tree/f4pga_flow)
 
 The goal is for each design in this repo to have an edalize script for a traditional Vivado flow, as well as two scripts for F4PGA flows (one with VPR and the other with NextPNR).
 
@@ -14,19 +14,54 @@ Edalize has three stages:
 
 Each of these stages corresponds to a method on the backend (Edatool class) provided by Edalize. See the scripts for examples.
 
-### Current working status
-This table shows the most recent test status for each particular flow variant. I do these tests on my machine, targeting a Basys3.
+### Testing result tables
 
-| Design          | Status (Vivado)                       | Status (VPR)                          | Status (NextPNR)                      |
-| ------          | ---------------                       | ------------                          | ----------------                      | 
-| Blinky          | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
-| Four Functions  | Compiles and works correctly  | Compiles and works correctly          | Compiles but does not work correctly  |
-| Arithmetic      | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
-| Seven Segment   | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
-| Counter         | Compiles and works correctly  | Compiles and works correctly          | Does not compile (NextPNR get_nets)   |
-| Stopwatch       | Compiles and works correctly  | Compiles but only works partially     | Does not compile (NextPNR hangs?)     |
-| Debounce        | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
-| Transmitter (tx)| Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          | 
-| Codebreaker     | Compiles and works correctly  | Compiles but does not work correctly  | Does not compile (no Bels remaining)  |
-| Receiver (rx)   | Compiles and works correctly  | Compiles and works correctly          | Compiles and works correctly          |
-| Pong            | Compiles and works correctly  | Compiles and works correctly          | Does not compile (see [here](https://github.com/gatecat/nextpnr-xilinx/issues/44)) |
+As a way of recording progress and tracking bugs, I've created the following tables showing my results from running the scripts in this repo which use a recent install of the Vivado and F4PGA tools. 
+
+#### Vivado script
+
+| Project name      | Bitstream Compiles? | Design Works? | Date of last test |
+| ----------------- | ------------------- | ------------- | ----------------- |
+| blinky            |
+| four-functions    |
+| arithmetic        |
+| seven-segment     |
+| counter           |
+| stopwatch         |
+| debounce          |
+| transmitter (tx)  |
+| codebreaker       | 
+| receiver (rx)     |
+| pong              |
+
+#### VPR script
+
+| Project name      | Bitstream Compiles? | Design Works? | Date of last test |
+| ----------------- | ------------------- | ------------- | ----------------- |
+| blinky            |
+| four-functions    |
+| arithmetic        |
+| seven-segment     |
+| counter           |
+| stopwatch         |
+| debounce          |
+| transmitter (tx)  |
+| codebreaker       | 
+| receiver (rx)     |
+| pong              |
+
+#### NextPNR script
+
+| Project name      | Bitstream Compiles? | Design Works? | Date of last test |
+| ----------------- | ------------------- | ------------- | ----------------- |
+| blinky            |
+| four-functions    |
+| arithmetic        |
+| seven-segment     |
+| counter           |
+| stopwatch         |
+| debounce          |
+| transmitter (tx)  |
+| codebreaker       | 
+| receiver (rx)     |
+| pong              |
