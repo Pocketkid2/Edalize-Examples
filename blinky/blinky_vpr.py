@@ -15,12 +15,13 @@ edam = {
     'toplevel'      : 'blinky',
     'flow_options'  : {
         "device": "artix7",
-        "part": "xc7a35tcpg236-1"
+        "part": "xc7a35tcpg236-1",
+        "chip": "xc7a50t_test"
     }
 }
 
 backend = F4pga_flow(edam = edam, work_root = work_root)
 os.makedirs(work_root)
 backend.configure()
-#backend.build()
-#backend.run()
+backend.build()
+backend.run([])
